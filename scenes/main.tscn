@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://du7c6r7mtk6kd"]
+
+[ext_resource type="PackedScene" uid="uid://dbdvionic7wca" path="res://scenes/larva.tscn" id="1_o5rni"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_vaohc"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_vaohc")
+
+[node name="background" type="CanvasModulate" parent="."]
+color = Color(0.909804, 0.721569, 0.282353, 1)
+
+[node name="larva" parent="." instance=ExtResource("1_o5rni")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(150, 200)

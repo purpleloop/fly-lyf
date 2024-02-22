@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://dbdvionic7wca"]
+
+[ext_resource type="Script" path="res://scenes/larva.gd" id="1_5nm4r"]
+[ext_resource type="Texture2D" uid="uid://bu0i6t5suaw5w" path="res://media/images/larva.png" id="1_i2xnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw1kl"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(0, 0, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7am1p"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(0, 62, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj2gt"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(0, 124, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgsdw"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(0, 186, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rwid"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(235, 0, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy56g"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(235, 62, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6l4v"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(235, 124, 235, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_insiw"]
+atlas = ExtResource("1_i2xnm")
+region = Rect2(235, 186, 235, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mrtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw1kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7am1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj2gt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgsdw")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rwid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy56g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6l4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_insiw")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2poq6"]
+radius = 27.0
+height = 194.0
+
+[node name="larva" type="Area2D"]
+script = ExtResource("1_5nm4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5mrtc")
+animation = &"left"
+frame = 3
+frame_progress = 0.288482
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -4.71239
+shape = SubResource("CapsuleShape2D_2poq6")
