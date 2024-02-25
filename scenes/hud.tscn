@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b65n6le07qogs"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_pagmn"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_pagmn")
+
+[node name="messageLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_right = 47.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Larva phase"

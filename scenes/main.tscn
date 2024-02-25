@@ -1,15 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://du7c6r7mtk6kd"]
+[gd_scene load_steps=6 format=3 uid="uid://du7c6r7mtk6kd"]
 
 [ext_resource type="PackedScene" uid="uid://dbdvionic7wca" path="res://scenes/larva.tscn" id="1_o5rni"]
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_vaohc"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_vaohc"]
+[ext_resource type="Texture2D" uid="uid://b5yfd6brx3i87" path="res://media/images/background.png" id="4_bg3t1"]
+[ext_resource type="PackedScene" uid="uid://b65n6le07qogs" path="res://scenes/hud.tscn" id="4_xc144"]
+[ext_resource type="AudioStream" uid="uid://20atgyccelpn" path="res://media/music/happy-carnival.ogg" id="5_g0j15"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_vaohc")
 
-[node name="background" type="CanvasModulate" parent="."]
-color = Color(0.909804, 0.721569, 0.282353, 1)
-
 [node name="larva" parent="." instance=ExtResource("1_o5rni")]
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(150, 200)
+position = Vector2(260, 552)
+
+[node name="background" type="ParallaxBackground" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.239216, 0.27451, 0.188235, 1)
+
+[node name="Layer1" type="ParallaxLayer" parent="background"]
+
+[node name="bg1" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(131, 620)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+
+[node name="bg2" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(645, 620)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+
+[node name="bg3" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(388, 620)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+flip_h = true
+
+[node name="bg4" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(901.544, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+flip_h = true
+
+[node name="bg5" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(1416.54, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+flip_h = true
+
+[node name="bg6" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(1159.54, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+
+[node name="bg7" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(-639.456, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+flip_h = true
+
+[node name="bg8" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(-126, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+flip_h = true
+
+[node name="bg9" type="Sprite2D" parent="background/Layer1"]
+position = Vector2(-382.456, 619.5)
+scale = Vector2(0.309, 1)
+texture = ExtResource("4_bg3t1")
+
+[node name="hud" parent="." instance=ExtResource("4_xc144")]
+
+[node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_g0j15")
+
+[connection signal="moved" from="larva" to="." method="_on_larva_moved"]

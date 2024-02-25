@@ -1,7 +1,10 @@
 extends Area2D
+signal moved
+
 
 @export  var speed = 20
 var screen_size
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +32,12 @@ func _process(delta):
 
 	if velocity.x > 0:
 		$AnimatedSprite2D.animation="right"
+		moved.emit(delta)
 	elif velocity.x < 0:
 		$AnimatedSprite2D.animation="left"
+		moved.emit(-delta)
+		
+		
 
 func start(pos):
 	position=pos
