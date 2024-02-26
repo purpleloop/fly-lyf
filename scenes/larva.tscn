@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dbdvionic7wca"]
 
-[ext_resource type="Script" path="res://larva.gd" id="1_5nm4r"]
+[ext_resource type="Script" path="res://scripts/larva.gd" id="1_5nm4r"]
 [ext_resource type="Texture2D" uid="uid://bu0i6t5suaw5w" path="res://media/images/larva.png" id="1_i2xnm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80kpk"]
@@ -89,3 +89,5 @@ frame_progress = 0.25
 position = Vector2(8, -1)
 rotation = -4.71239
 shape = SubResource("CapsuleShape2D_2poq6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,8 @@
 extends Area2D
 signal moved
+signal grabbed
 
-
-@export  var speed = 20
+@export  var speed = 40
 var screen_size
 
 
@@ -43,3 +43,5 @@ func start(pos):
 	position=pos
 	show()
 
+func _on_body_entered(body):	
+	grabbed.emit()

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfil1fat2xdr8"]
+
+[ext_resource type="Texture2D" uid="uid://jr6nhs5vciji" path="res://media/images/food.png" id="1_5qb2w"]
+[ext_resource type="Script" path="res://scripts/food.gd" id="1_rm27q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18en7"]
+atlas = ExtResource("1_5qb2w")
+region = Rect2(0, 58, 66, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oc8p"]
+atlas = ExtResource("1_5qb2w")
+region = Rect2(0, 0, 66, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ojec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18en7")
+}],
+"loop": true,
+"name": &"bean",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oc8p")
+}],
+"loop": true,
+"name": &"meat",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjogg"]
+radius = 25.0
+height = 54.0
+
+[node name="food" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_rm27q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ojec")
+animation = &"meat"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cjogg")
+
+[node name="decayTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
